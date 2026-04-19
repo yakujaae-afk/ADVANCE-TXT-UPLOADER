@@ -533,7 +533,15 @@ async def upload(bot: Client, m: Message):
     #else:
         #MR = raw_text3
    
-    
+     await editable.edit("**𝗘𝗻𝘁𝗲𝗿 𝗣𝘄 𝗧𝗼𝗸𝗲𝗻 𝗙𝗼𝗿 𝗣𝘄 𝗨𝗽𝗹𝗼𝗮𝗱𝗶𝗻𝗴 𝗼𝗿 𝗦𝗲𝗻𝗱 `3` 𝗙𝗼𝗿 𝗢𝘁𝗵𝗲𝗿𝘀**")
+    input4: Message = await bot.listen(editable.chat.id)
+    raw_text4 = input4.text
+    await input4.delete(True)
+    if raw_text4 == 3:
+        MR = token
+    else:
+        MR = raw_text4
+
 
     
 
@@ -542,7 +550,16 @@ async def upload(bot: Client, m: Message):
     raw_text6 = input6.text
     await input6.delete(True)
     await editable.delete()
-
+ #thumb = input6.text
+        #getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
+        #thumb = "thumb.jpg"
+    else:
+        thumb == "no"
+    failed_count =0
+    if len(links) == 1:
+        count = 1
+    else:
+        count = int(raw_text)
     
 
     try:
