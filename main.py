@@ -553,7 +553,7 @@ async def upload(bot: Client, m: Message):
     #thumb = input6.text
         #getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
         #thumb = "thumb.jpg"
-    elese: 
+    else: 
         thumb == "no"
     failed_count =0
     if len(links) == 1:
