@@ -550,16 +550,7 @@ async def upload(bot: Client, m: Message):
     await input6.delete(True)
     await editable.delete()
 
-    #thumb = input6.text
-        #getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
-        #thumb = "thumb.jpg"
-    else: 
-        thumb == "no"
-    failed_count =0
-    if len(links) == 1:
-        count = 1
-    else:
-        count = int(raw_text)
+    
 
     try:
         for i in range(count - 1, len(links)):
