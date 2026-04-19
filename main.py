@@ -527,7 +527,13 @@ async def upload(bot: Client, m: Message):
             CR = raw_text3  # In case the input is not in the expected format, use the raw text
     else:
         CR = credit
+
     
+     try:
+        for i in range(count - 1, len(links)):
+
+            V = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
+            url = "https://" + V
 
             if "visionias" in url:
                 async with ClientSession() as session:
