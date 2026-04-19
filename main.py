@@ -844,7 +844,7 @@ if __name__ == "__main__":
     try:
         # Create tasks to run bot and web server concurrently
         loop.create_task(start_bot())
-        loop.create_task(start_web())
+      
 
         # Keep the main thread running until all tasks are complete
         loop.run_forever()
