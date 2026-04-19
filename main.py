@@ -838,6 +838,38 @@ async def upload(bot: Client, m: Message):
                        f"✅𝗦𝗧𝗔𝗧𝗨𝗦 » 𝗖𝗢𝗠𝗣𝗟𝗘𝗧𝗘𝗗`")
     await m.reply_text(f"<pre><code>📥𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤『{CR}』</code></pre>")          
 
-bot.run()
+async def main():
+    if WEBHOOK:
+        # Start the web server
+        app = await web_server()
+        runner = web.AppRunner(app)
+        await runner.setup()
+        site = web.TCPSite(runner, "0.0.0.0", PORT)
+        await site.start()
+        print(f"Web server started on port {PORT}")
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    print("""
+    █░█░█ █▀█ █▀█ █▀▄ █▀▀ █▀█ ▄▀█ █▀▀ ▀█▀     ▄▀█ █▀ █░█ █░█ ▀█▀ █▀█ █▀ █░█   
+    ▀▄▀▄▀ █▄█ █▄█ █▄▀ █▄▄ █▀▄ █▀█ █▀░ ░█░     █▀█ ▄█ █▀█ █▄█ ░█░ █▄█ ▄█ █▀█ """)
+
+    # Start the bot and web server concurrently
+    async def start_bot():
+        await bot.start()
+
+    async def start_web():
+        await main()
+
+    loop = asyncio.get_event_loop()
+    try:
+        # Create tasks to run bot and web server concurrently
+        loop.create_task(start_bot())
+        loop.create_task(start_web())
+
+        # Keep the main thread running until all tasks are complete
+        loop.run_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        # Cleanup
+        loop.stop()
