@@ -551,8 +551,7 @@ async def upload(bot: Client, m: Message):
     await editable.delete()
 
     #thumb = input6.text
-    
-        #getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
+    #getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
         #thumb = "thumb.jpg"
     else:
         thumb == "no"
