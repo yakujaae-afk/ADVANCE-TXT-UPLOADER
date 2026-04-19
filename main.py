@@ -60,7 +60,7 @@ OWNER_ID = 7660916897 # Replace with the actual owner's user ID
 SUDO_USERS = [7660916897]
 
 # ✅ Multiple AUTH CHANNELS allowed
-AUTH_CHANNELS = [-1001235155926,-1001235155926]  # Add more channel IDs here
+AUTH_CHANNELS = [-1002605113558,-1002663510614]  # Add more channel IDs here
 
 # Function to check if a user is authorized
 def is_authorized(user_id: int) -> bool:
@@ -135,8 +135,8 @@ random_image_url = random.choice(image_urls)
 # Caption for the image
 caption = (
         "**ʜᴇʟʟᴏ👋**\n\n"
-        "➠ **YOUR FATHER PUBZELO ʙᴏᴛ.**\n"
-        "➠ **ғᴏʀ ᴜsᴇ ᴍᴇ sᴇɴᴅ /PUBZELO.\n"
+        "➠ **ɪ ᴀᴍ ᴛxᴛ ᴛᴏ ᴠɪᴅᴇᴏ ᴜᴘʟᴏᴀᴅᴇʀ ʙᴏᴛ.**\n"
+        "➠ **ғᴏʀ ᴜsᴇ ᴍᴇ sᴇɴᴅ /tushar.\n"
         "➠ **ғᴏʀ ɢᴜɪᴅᴇ sᴇɴᴅ /help."
 )
     
@@ -303,7 +303,7 @@ async def edit_txt(client, message: Message):
     try:
         await message.reply_document(
             document=final_file_path,
-            caption="📥**𝗘𝗱𝗶𝘁𝗲𝗱 𝗕𝘆 ➤ MAX**"
+            caption="📥**𝗘𝗱𝗶𝘁𝗲𝗱 𝗕𝘆 ➤ 𝗧𝘂𝘀𝗵𝗮𝗿**"
         )
     except Exception as e:
         await message.reply_text(f"🚨 **Error**: Unable to send the file.\n\nDetails: {e}")
@@ -393,7 +393,7 @@ async def ytplaylist_to_txt(client: Client, message: Message):
         file_name = save_to_file(videos, title)
         await message.reply_document(
             document=file_name, 
-            caption=f"`{title}`\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤ MAX"
+            caption=f"`{title}`\n\n📥 𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤ 𝗧𝘂𝘀𝗵𝗮𝗿"
         )
         os.remove(file_name)
     else:
@@ -415,7 +415,7 @@ async def list_users(client: Client, msg: Message):
 async def help_command(client: Client, msg: Message):
     help_text = (
         "`/start` - Start the bot⚡\n\n"
-        "`/PUBZELO` - Download and upload files (sudo)🎬\n\n"
+        "`/tushar` - Download and upload files (sudo)🎬\n\n"
         "`/restart` - Restart the bot🔮\n\n" 
         "`/stop` - Stop ongoing process🛑\n\n"
         "`/cookies` - Upload cookies file🍪\n\n"
@@ -429,7 +429,7 @@ async def help_command(client: Client, msg: Message):
     await msg.reply_text(help_text)
 
 # Upload command handler
-@bot.on_message(filters.command(["MAX"]))
+@bot.on_message(filters.command(["tushar"]))
 async def upload(bot: Client, m: Message):
     if not is_authorized(m.chat.id):
         await m.reply_text("**🚫You are not authorized to use this bot.**")
@@ -550,7 +550,17 @@ async def upload(bot: Client, m: Message):
     await input6.delete(True)
     await editable.delete()
 
-  
+    #thumb = input6.text
+    #if thumb.startswith("http://") or thumb.startswith("https://"):
+        #getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
+        #thumb = "thumb.jpg"
+    else:
+        thumb == "no"
+    failed_count =0
+    if len(links) == 1:
+        count = 1
+    else:
+        count = int(raw_text)
 
     try:
         for i in range(count - 1, len(links)):
@@ -828,28 +838,6 @@ async def upload(bot: Client, m: Message):
                        f"✅𝗦𝗧𝗔𝗧𝗨𝗦 » 𝗖𝗢𝗠𝗣𝗟𝗘𝗧𝗘𝗗`")
     await m.reply_text(f"<pre><code>📥𝗘𝘅𝘁𝗿𝗮𝗰𝘁𝗲𝗱 𝗕𝘆 ➤『{CR}』</code></pre>")          
 
-
+bot.run()
 if __name__ == "__main__":
-    print("""
-    █░█░█ █▀█ █▀█ █▀▄ █▀▀ █▀█ ▄▀█ █▀▀ ▀█▀     ▄▀█ █▀ █░█ █░█ ▀█▀ █▀█ █▀ █░█   
-    ▀▄▀▄▀ █▄█ █▄█ █▄▀ █▄▄ █▀▄ █▀█ █▀░ ░█░     █▀█ ▄█ █▀█ █▄█ ░█░ █▄█ ▄█ █▀█ """)
-
-    # Start the bot and web server concurrently
-    async def start_bot():
-        await bot.start()
-
-   
-
-    loop = asyncio.get_event_loop()
-    try:
-        # Create tasks to run bot and web server concurrently
-        loop.create_task(start_bot())
-      
-
-        # Keep the main thread running until all tasks are complete
-        loop.run_forever()
-    except KeyboardInterrupt:
-        pass
-    finally:
-        # Cleanup
-        loop.stop()
+    asyncio.run(main())
