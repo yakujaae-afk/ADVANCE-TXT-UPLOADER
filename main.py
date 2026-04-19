@@ -838,8 +838,7 @@ if __name__ == "__main__":
     async def start_bot():
         await bot.start()
 
-    async def start_web():
-        await main()
+   
 
     loop = asyncio.get_event_loop()
     try:
