@@ -839,4 +839,26 @@ async def upload(bot: Client, m: Message):
 
 bot.run()
 if __name__ == "__main__":
-    asyncio.run(main())
+    print("""
+    █░█░█ █▀█ █▀█ █▀▄ █▀▀ █▀█ ▄▀█ █▀▀ ▀█▀     ▄▀█ █▀ █░█ █░█ ▀█▀ █▀█ █▀ █░█   
+    ▀▄▀▄▀ █▄█ █▄█ █▄▀ █▄▄ █▀▄ █▀█ █▀░ ░█░     █▀█ ▄█ █▀█ █▄█ ░█░ █▄█ ▄█ █▀█ """)
+
+    # Start the bot and web server concurrently
+    async def start_bot():
+        await bot.start()
+
+    async def start_web():
+        await main()
+
+    loop = asyncio.get_event_loop()
+    try:
+        # Create tasks to run bot and web server concurrently
+        loop.create_task(start_bot())
+
+        # Keep the main thread running until all tasks are complete
+        loop.run_forever()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        # Cleanup
+        loop.stop()
