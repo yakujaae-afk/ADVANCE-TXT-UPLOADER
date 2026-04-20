@@ -16,7 +16,7 @@ class Timer:
         return False
 
 
-from datetime import datetime,timedelta
+
 
 def hrb(value, digits= 2, delim= "", postfix=""):
     """Return a human-readable file size.
