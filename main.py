@@ -17,14 +17,11 @@ import datetime
 import random
 import ffmpeg
 import logging 
-import yt_dlp
 from subprocess import getstatusoutput
 from aiohttp import web
 from core import *
 from urllib.parse import urlparse, parse_qs
 from bs4 import BeautifulSoup
-from yt_dlp import YoutubeDL
-import yt_dlp as youtube_dl
 import cloudscraper
 import m3u8
 import core as helper
