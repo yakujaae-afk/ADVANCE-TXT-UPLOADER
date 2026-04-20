@@ -19,7 +19,7 @@ import ffmpeg
 import logging 
 from subprocess import getstatusoutput
 from aiohttp import web
-from core import *
+from core import 
 from urllib.parse import urlparse, parse_qs
 from bs4 import BeautifulSoup
 import cloudscraper
