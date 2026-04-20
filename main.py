@@ -60,7 +60,7 @@ OWNER_ID = 7660916897 # Replace with the actual owner's user ID
 SUDO_USERS = [7660916897]
 
 # ✅ Multiple AUTH CHANNELS allowed
-AUTH_CHANNELS = [-1002605113558,-1002663510614]  # Add more channel IDs here
+AUTH_CHANNELS = [-1001235155926,-1001235155926]  # Add more channel IDs here
 
 # Function to check if a user is authorized
 def is_authorized(user_id: int) -> bool:
@@ -527,8 +527,24 @@ async def upload(bot: Client, m: Message):
             CR = raw_text3  # In case the input is not in the expected format, use the raw text
     else:
         CR = credit
+    #highlighter  = f"️ ⁪⁬⁮⁮⁮"
+    #if raw_text3 == 'Robin':
+        #MR = highlighter 
+    #else:
+        #MR = raw_text3
+   
+    await editable.edit("**𝗘𝗻𝘁𝗲𝗿 𝗣𝘄 𝗧𝗼𝗸𝗲𝗻 𝗙𝗼𝗿 𝗣𝘄 𝗨𝗽𝗹𝗼𝗮𝗱𝗶𝗻𝗴 𝗼𝗿 𝗦𝗲𝗻𝗱 `3` 𝗙𝗼𝗿 𝗢𝘁𝗵𝗲𝗿𝘀**")
+    input4: Message = await bot.listen(editable.chat.id)
+    raw_text4 = input4.text
+    await input4.delete(True)
+    if raw_text4 == 3:
+        MR = token
+    else:
+        MR = raw_text4
 
-      await editable.edit(Ashu.T1_TEXT)
+    
+
+    await editable.edit("𝗡𝗼𝘄 𝗦𝗲𝗻𝗱 𝗧𝗵𝗲 𝗧𝗵𝘂𝗺𝗯 𝗨𝗿𝗹 𝗘𝗴 » https://graph.org/file/13a89d77002442255efad-989ac290c1b3f13b44.jpg\n\n𝗢𝗿 𝗜𝗳 𝗗𝗼𝗻'𝘁 𝗪𝗮𝗻𝘁 𝗧𝗵𝘂𝗺𝗯𝗻𝗮𝗶𝗹 𝗦𝗲𝗻𝗱 = 𝗻𝗼")
     input6 = message = await bot.listen(editable.chat.id)
     raw_text6 = input6.text
     await input6.delete(True)
@@ -540,16 +556,14 @@ async def upload(bot: Client, m: Message):
         thumb = "thumb.jpg"
     else:
         thumb == "no"
-
+    failed_count =0
     if len(links) == 1:
         count = 1
     else:
         count = int(raw_text)
 
-    
-     try:
+    try:
         for i in range(count - 1, len(links)):
-
             V = links[i][1].replace("file/d/","uc?export=download&id=").replace("www.youtube-nocookie.com/embed", "youtu.be").replace("?modestbranding=1", "").replace("/view?usp=sharing","") # .replace("mpd","m3u8")
             url = "https://" + V
 
@@ -826,26 +840,4 @@ async def upload(bot: Client, m: Message):
 
 bot.run()
 if __name__ == "__main__":
-    print("""
-    █░█░█ █▀█ █▀█ █▀▄ █▀▀ █▀█ ▄▀█ █▀▀ ▀█▀     ▄▀█ █▀ █░█ █░█ ▀█▀ █▀█ █▀ █░█   
-    ▀▄▀▄▀ █▄█ █▄█ █▄▀ █▄▄ █▀▄ █▀█ █▀░ ░█░     █▀█ ▄█ █▀█ █▄█ ░█░ █▄█ ▄█ █▀█ """)
-
-    # Start the bot and web server concurrently
-    async def start_bot():
-        await bot.start()
-
-    async def start_web():
-        await main()
-
-    loop = asyncio.get_event_loop()
-    try:
-        # Create tasks to run bot and web server concurrently
-        loop.create_task(start_bot())
-
-        # Keep the main thread running until all tasks are complete
-        loop.run_forever()
-    except KeyboardInterrupt:
-        pass
-    finally:
-        # Cleanup
-        loop.stop()
+    asyncio.run(main())
