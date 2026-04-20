@@ -17,6 +17,7 @@ import datetime
 import random
 import ffmpeg
 import logging 
+import yt_dlp
 from subprocess import getstatusoutput
 from aiohttp import web
 from core import *
@@ -59,7 +60,7 @@ OWNER_ID = 7660916897 # Replace with the actual owner's user ID
 SUDO_USERS = [7660916897]
 
 # ✅ Multiple AUTH CHANNELS allowed
-AUTH_CHANNELS = [-1001235155926,-1001235155926]  # Add more channel IDs here
+AUTH_CHANNELS = [-1002605113558,-1002663510614]  # Add more channel IDs here
 
 # Function to check if a user is authorized
 def is_authorized(user_id: int) -> bool:
@@ -544,11 +545,11 @@ async def upload(bot: Client, m: Message):
             CR = raw_text3  # In case the input is not in the expected format, use the raw text
     else:
         CR = credit
-    highlighter  = f"️ ⁪⁬⁮⁮⁮"
-    if raw_text3 == 'Robin':
-        MR = highlighter 
-    else:
-        MR = raw_text3
+    #highlighter  = f"️ ⁪⁬⁮⁮⁮"
+    #if raw_text3 == 'Robin':
+        #MR = highlighter 
+    #else:
+        #MR = raw_text3
    
     await editable.edit("**𝗘𝗻𝘁𝗲𝗿 𝗣𝘄 𝗧𝗼𝗸𝗲𝗻 𝗙𝗼𝗿 𝗣𝘄 𝗨𝗽𝗹𝗼𝗮𝗱𝗶𝗻𝗴 𝗼𝗿 𝗦𝗲𝗻𝗱 `3` 𝗙𝗼𝗿 𝗢𝘁𝗵𝗲𝗿𝘀**")
     input4: Message = await bot.listen(editable.chat.id)
@@ -570,8 +571,14 @@ async def upload(bot: Client, m: Message):
     thumb = input6.text
     if thumb.startswith("http://") or thumb.startswith("https://"):
         getstatusoutput(f"wget '{thumb}' -O 'thumb.jpg'")
-        thumb = "thumb.jpg"
-  
+           thumb = "thumb.jpg"
+    else:
+        thumb == "no"
+    failed_count =0
+    if len(links) == 1:
+        count = 1
+    else:
+        count = int(raw_text)
 
     try:
         for i in range(count - 1, len(links)):
